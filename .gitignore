@@ -1,0 +1,11 @@
+backend/node_modules
+backend/uploads
+backend/clips
+backend/.env
+*.mp4
+*.mp3
+*.m4a
+*.webm
+*.mkv
+error.txt
+.git

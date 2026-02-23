@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ClipForge AI - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#397bf3",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#0a0a0a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-nav {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen font-display pb-24 md:pb-0">
+<!-- Top Navbar -->
+<nav class="sticky top-0 z-50 glass-nav px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="bg-primary size-8 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">movie_edit</span>
+</div>
+<span class="font-bold text-lg tracking-tight hidden sm:block">ClipForge AI</span>
+</div>
+<div class="flex-1 max-w-md mx-4 hidden md:block">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="w-full bg-white/5 border-white/10 rounded-lg pl-10 pr-4 py-2 focus:ring-primary focus:border-primary text-sm transition-all" placeholder="Search projects..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-400 hover:text-white transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 size-2 bg-primary rounded-full border-2 border-background-dark"></span>
+</button>
+<div class="size-9 rounded-full bg-slate-800 border border-white/10 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar of a smiling man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrwUzqtM_jEO_zKHxpwJwh2Ksvbbk7hLkAQz3aYvSa7f3qpEpyJV0GkYQESKmoTofx1z6sMZfpMWdXjErKC2IgHOFkNA79XNgDqVeVZj2fDjpW4BcZTG_zoUNc7CmD-Htd_jKXEQhKIOW6J5w7lDr0x6oDk7MHH3d6Owa_901gnBUqQI0Mn5OKaju6guVs9SgNWob04jCYcOIW1KnGe8mrydk4Vqis6uF8tdpDkTaM3kNwnAyRMMrFWLenMIAnejO6rIudAA6a3uw"/>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-4 py-8">
+<!-- Header -->
+<header class="mb-8">
+<h1 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+                Welcome back, Harshit 👋
+            </h1>
+<p class="text-slate-400 mt-2">Here's what's happening with your video projects today.</p>
+</header>
+<!-- Analytics Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+<div class="glass-card p-5 rounded-xl flex flex-col gap-1">
+<div class="flex items-center justify-between mb-2">
+<span class="material-symbols-outlined text-primary">folder_open</span>
+<span class="text-emerald-400 text-xs font-medium bg-emerald-400/10 px-2 py-0.5 rounded-full">+12%</span>
+</div>
+<span class="text-2xl font-bold">24</span>
+<span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Projects</span>
+</div>
+<div class="glass-card p-5 rounded-xl flex flex-col gap-1">
+<div class="flex items-center justify-between mb-2">
+<span class="material-symbols-outlined text-primary">bolt</span>
+<span class="text-emerald-400 text-xs font-medium bg-emerald-400/10 px-2 py-0.5 rounded-full">+5%</span>
+</div>
+<span class="text-2xl font-bold">142</span>
+<span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Shorts</span>
+</div>
+<div class="glass-card p-5 rounded-xl flex flex-col gap-1">
+<div class="flex items-center justify-between mb-2">
+<span class="material-symbols-outlined text-primary">visibility</span>
+<span class="text-emerald-400 text-xs font-medium bg-emerald-400/10 px-2 py-0.5 rounded-full">+18%</span>
+</div>
+<span class="text-2xl font-bold">12.5k</span>
+<span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Views</span>
+</div>
+<div class="glass-card p-5 rounded-xl flex flex-col gap-1">
+<div class="flex items-center justify-between mb-2">
+<span class="material-symbols-outlined text-primary">database</span>
+<span class="text-rose-400 text-xs font-medium bg-rose-400/10 px-2 py-0.5 rounded-full">-5%</span>
+</div>
+<span class="text-2xl font-bold">450</span>
+<span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Credits</span>
+</div>
+</div>
+<!-- Section Title & Filter -->
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-bold">Recent Projects</h2>
+<button class="flex items-center gap-2 text-sm font-medium text-primary hover:bg-primary/10 px-3 py-1.5 rounded-lg transition-colors">
+                View all <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Project Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Project Card 1 (Completed) -->
+<div class="glass-card rounded-xl overflow-hidden group cursor-pointer transition-transform hover:scale-[1.02]">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover" data-alt="Cinematic nature landscape video thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANgTwB3YlbSQJF8OspOqkQXIXcTgek_5wHMqFslGay3CXFB15gaPercajyvcnlpjLUTXPlfIvaLM6n9980OkjLXdMazlI5NsxzDQt4-5S_4DEgI5IlhGXxz1XFl0ZtDzxMipGeY1KY-PBdx_Kd6c0oDfsgnQbcOrA8GGF1j7RaeyQS_93VDSAP6slgh3dd2O6ogmEp51iiXuz1RYMBskFCaJGCJlhalB3fCfMJF8ktdwG0NNV-t_1MSLszOnwkiUGQ59gBCQb-enc"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="bg-primary size-12 rounded-full flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-white text-3xl fill-1">play_arrow</span>
+</div>
+</div>
+<div class="absolute top-2 left-2 flex gap-2">
+<span class="bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Completed</span>
+<span class="bg-black/60 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">English</span>
+</div>
+</div>
+<div class="p-4">
+<h3 class="font-semibold text-sm truncate mb-3">AI Travel Vlog: Hidden Gems of Iceland</h3>
+<div class="flex gap-2">
+<button class="flex-1 border border-white/10 hover:bg-white/5 py-2 rounded-lg text-xs font-bold transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">edit</span> Edit
+                        </button>
+<button class="flex-1 bg-primary hover:bg-primary/80 py-2 rounded-lg text-xs font-bold transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">download</span> Download
+                        </button>
+</div>
+</div>
+</div>
+<!-- Project Card 2 (Processing) -->
+<div class="glass-card rounded-xl overflow-hidden group cursor-pointer transition-transform hover:scale-[1.02]">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover" data-alt="Tech desk with gadgets and neon lights thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwFhzDFhfHRrArPBv4WTAtwnovFuaA8u2pEx13CWM9WA7sP4Mv3-13VJycT3b6euODgh-7jk0Gd7qA2MMcTRPmXPYPC8FtpyZ3zEZRx2nfQWi4zD0YgPss7qoNpElDWgtFzelfFXVrZ2N_dDYOEixS5_vzvDIWlo8imile6VUWfsFtFJhis6F8Zx1CjIyNYZO6n0I1KJKZ5VUWDtGQhGUuEdcKDdyt51Wx3cipGrgae_7dSFdf8F_mDk3oLpk0JvDx0s1-2apD4wU"/>
+<div class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center">
+<div class="size-8 rounded-full border-2 border-primary/30 border-t-primary animate-spin mb-2"></div>
+<span class="text-xs font-medium">Processing 64%</span>
+</div>
+<div class="absolute top-2 left-2 flex gap-2">
+<span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase flex items-center gap-1">
+<span class="size-1.5 bg-white rounded-full animate-pulse"></span> Processing
+                        </span>
+<span class="bg-black/60 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Hindi</span>
+</div>
+<div class="absolute bottom-0 left-0 h-1 bg-primary" style="width: 64%"></div>
+</div>
+<div class="p-4">
+<h3 class="font-semibold text-sm truncate mb-3">Top 10 Tech Gadgets 2024</h3>
+<div class="flex gap-2">
+<button class="flex-1 border border-white/10 hover:bg-white/5 py-2 rounded-lg text-xs font-bold transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">edit</span> Edit
+                        </button>
+<button class="flex-1 bg-white/5 text-slate-500 cursor-not-allowed py-2 rounded-lg text-xs font-bold flex items-center justify-center gap-1" disabled="">
+<span class="material-symbols-outlined text-sm">download</span> Download
+                        </button>
+</div>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div class="glass-card rounded-xl overflow-hidden group cursor-pointer transition-transform hover:scale-[1.02]">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover" data-alt="Gourmet food plating video thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuAF4tUZw0IhAWGnsudV6O8PlXeW0883UEvkxVnODqD2ipAtBQ7cEfJ8g8TgUBR3eoFD3WusXRxgGCVx3CkBdU7cEJc0tNZ79IFtetTwMMOoCmFJXCqk0ZWbj3ZrrW4GCTqagGZj_oiOZZK82T4VAwEddAUSPMPZBx7u4qf_zpV63k1Ud6Z20BETrEYeOVSvbPts7Yqf9UNELSbS3CG07qw0YCAlgX6bC8TpB2Wx1JLFefE0v6mawN7yp5A6tS9Pgph6SN2AxDeIE"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="bg-primary size-12 rounded-full flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-white text-3xl fill-1">play_arrow</span>
+</div>
+</div>
+<div class="absolute top-2 left-2 flex gap-2">
+<span class="bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Completed</span>
+<span class="bg-black/60 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Spanish</span>
+</div>
+</div>
+<div class="p-4">
+<h3 class="font-semibold text-sm truncate mb-3">Cooking Masterclass: Italian Pasta</h3>
+<div class="flex gap-2">
+<button class="flex-1 border border-white/10 hover:bg-white/5 py-2 rounded-lg text-xs font-bold transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">edit</span> Edit
+                        </button>
+<button class="flex-1 bg-primary hover:bg-primary/80 py-2 rounded-lg text-xs font-bold transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">download</span> Download
+                        </button>
+</div>
+</div>
+</div>
+<!-- Project Card 4 -->
+<div class="glass-card rounded-xl overflow-hidden group cursor-pointer transition-transform hover:scale-[1.02]">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover" data-alt="Mountain biking action shot thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApddtateGniyebZd7zLoQ2b0LCV5IXZkT4eSMotJEVBZeh9qNN0W_ENecPgN3l-Eu_m1ShtpK9Z8gJuVqOV5xiNNLX3cEnt8x3H_t64oaYZQ8fNGphIdorBwmaAhzRkvKLv309jeFoQuyi3RyQULgZ9pKwhxGY4hgAJAw7LR7V1zgvIbRDhFAT7wfhBmxUe89XcMslQh9fyn0-X3SWbuVhKGwyL5W2V-9YV30g1L2Uup0c04_IJzr95_OhMmBpWcjC8mgecIlBm68"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="bg-primary size-12 rounded-full flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-white text-3xl fill-1">play_arrow</span>
+</div>
+</div>
+<div class="absolute top-2 left-2 flex gap-2">
+<span class="bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Completed</span>
+<span class="bg-black/60 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">English</span>
+</div>
+</div>
+<div class="p-4">
+<h3 class="font-semibold text-sm truncate mb-3">Extreme Sports: Downhill MTB</h3>
+<div class="flex gap-2">
+<button class="flex-1 border border-white/10 hover:bg-white/5 py-2 rounded-lg text-xs font-bold transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">edit</span> Edit
+                        </button>
+<button class="flex-1 bg-primary hover:bg-primary/80 py-2 rounded-lg text-xs font-bold transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">download</span> Download
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav (Mobile Only) -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 glass-nav border-t border-white/5 px-6 py-2 flex items-center justify-between">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined fill-1">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">video_library</span>
+<span class="text-[10px] font-medium">Library</span>
+</a>
+<div class="relative -top-6">
+<button class="bg-primary size-12 rounded-full shadow-lg shadow-primary/40 flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-medium">Stats</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</div>
+</body></html>
