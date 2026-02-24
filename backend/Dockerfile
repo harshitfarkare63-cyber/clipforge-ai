@@ -29,11 +29,12 @@ RUN mkdir -p backend/uploads backend/clips
 
 # Set environment
 ENV NODE_ENV=production
+ENV PORT=8080
 ENV UPLOADS_DIR=/app/backend/uploads
 ENV CLIPS_DIR=/app/backend/clips
 
-# Railway injects PORT automatically — do not hardcode it
-EXPOSE 3001
+# Expose port
+EXPOSE 8080
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=10s \
