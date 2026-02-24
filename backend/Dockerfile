@@ -3,11 +3,11 @@ FROM node:20-slim
 
 # Install Python (for yt-dlp) and system deps
 RUN apt-get update && apt-get install -y \
-    python3 \
-    python3-pip \
-    python3-venv \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
+  python3 \
+  python3-pip \
+  python3-venv \
+  curl \
+  && rm -rf /var/lib/apt/lists/*
 
 # Install yt-dlp
 RUN pip3 install --break-system-packages yt-dlp || pip3 install yt-dlp
@@ -29,12 +29,11 @@ RUN mkdir -p backend/uploads backend/clips
 
 # Set environment
 ENV NODE_ENV=production
-ENV PORT=8080
 ENV UPLOADS_DIR=/app/backend/uploads
 ENV CLIPS_DIR=/app/backend/clips
 
-# Expose port
-EXPOSE 8080
+# Railway injects PORT automatically — do not hardcode it
+EXPOSE 3001
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=10s \

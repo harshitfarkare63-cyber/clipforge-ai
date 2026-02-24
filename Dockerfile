@@ -14,9 +14,9 @@ COPY . .
 RUN mkdir -p backend/uploads backend/clips
 
 ENV NODE_ENV=production
-ENV PORT=8080
 ENV UPLOADS_DIR=/app/backend/uploads
 ENV CLIPS_DIR=/app/backend/clips
-EXPOSE 8080
+# Railway injects PORT automatically — do not hardcode it
+EXPOSE 3001
 
 CMD ["node", "backend/server.js"]
