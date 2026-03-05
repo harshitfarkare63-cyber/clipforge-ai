@@ -111,35 +111,25 @@ async function callGeminiWithFallback(buildRequestFn) {
 // ── Transcribe + detect viral hooks with Gemini ───────────────
 async function transcribeAndDetectHooks(audioPart, videoDuration) {
 
-    const prompt = `You are a viral short-form video expert. I will give you an audio track from a long video.
+    const prompt = `You are a viral short-form video expert. Listen to this audio and find the TOP 5 most viral-worthy segments.
 
-Your tasks:
-1. TRANSCRIBE the audio completely with timestamps (every ~5 seconds, format: [MM:SS])
-2. FIND the top 5 most viral-worthy segments (15–60 seconds each)
-
-For each clip, return:
-- start_sec: start time in seconds (number)
-- end_sec: end time in seconds (number, max ${videoDuration})
+For EACH clip return ONLY these fields (keep transcript SHORT, max 30 words each):
+- start_sec: number
+- end_sec: number (max ${videoDuration})
 - title: catchy title (max 8 words)
-- hook: the opening hook line the viewer hears
-- reason: why this is viral-worthy
-- engagementScore: 1–100 virality prediction
-- viralType: one of [educational, emotional, funny, inspiring, shocking, controversial]
-- transcript: the words spoken in this segment
+- hook: opening hook sentence (max 15 words)
+- reason: why viral (max 10 words)
+- engagementScore: 1–100
+- viralType: educational|emotional|funny|inspiring|shocking|controversial
+- transcript: max 30 words from that segment
 
 Rules:
 - Clips must NOT overlap
 - Clips must be 15–60 seconds
-- Prioritize: hooks, surprises, strong emotions, humor, controversial takes
-- The very first word/phrase must hook the viewer immediately
+- Prioritize hooks, surprises, strong emotions, humor
 
-Respond ONLY with valid JSON:
-{
-  "transcript": "full transcript with [MM:SS] timestamps...",
-  "clips": [
-    { "start_sec": 12, "end_sec": 45, "title": "...", "hook": "...", "reason": "...", "engagementScore": 92, "viralType": "educational", "transcript": "..." }
-  ]
-}`;
+Respond ONLY with this exact JSON structure, nothing else:
+{"clips":[{"start_sec":12,"end_sec":45,"title":"...","hook":"...","reason":"...","engagementScore":92,"viralType":"educational","transcript":"..."}]}`;
 
     const result = await callGeminiWithFallback(model => model.generateContent({
         contents: [{
@@ -152,19 +142,52 @@ Respond ONLY with valid JSON:
         generationConfig: {
             temperature: 0.7,
             topP: 0.95,
-            maxOutputTokens: 8192,
+            maxOutputTokens: 16384,
             responseMimeType: 'application/json',
         },
     }));
 
     const text = result.response.text();
+    console.log('[Analyzer] Gemini raw response length:', text.length);
+
+    // Try direct parse first
     try {
-        return JSON.parse(text);
-    } catch {
-        const match = text.match(/\{[\s\S]*\}/);
-        if (match) return JSON.parse(match[0]);
-        throw new Error('Gemini returned invalid JSON: ' + text.slice(0, 200));
+        const parsed = JSON.parse(text);
+        if (parsed.clips?.length > 0) return parsed;
+    } catch { }
+
+    // Try extracting JSON object from text
+    const objMatch = text.match(/\{[\s\S]*\}/);
+    if (objMatch) {
+        try {
+            const parsed = JSON.parse(objMatch[0]);
+            if (parsed.clips?.length > 0) return parsed;
+        } catch { }
     }
+
+    // Try extracting partial clips array — handles truncated JSON
+    const arrayMatch = text.match(/\[[\s\S]*?\]/);
+    if (arrayMatch) {
+        try {
+            const clips = JSON.parse(arrayMatch[0]);
+            if (Array.isArray(clips) && clips.length > 0) return { clips };
+        } catch { }
+    }
+
+    // Try to recover individual clip objects from truncated JSON
+    const clipMatches = [...text.matchAll(/\{[^{}]*"start_sec"[^{}]*\}/g)];
+    if (clipMatches.length > 0) {
+        const clips = [];
+        for (const m of clipMatches) {
+            try { clips.push(JSON.parse(m[0])); } catch { }
+        }
+        if (clips.length > 0) {
+            console.warn('[Analyzer] Recovered', clips.length, 'clips from partial JSON');
+            return { clips };
+        }
+    }
+
+    throw new Error('Gemini returned unrecoverable JSON. Response: ' + text.slice(0, 300));
 }
 
 // ── Generate clip metadata with Gemini Flash ──────────────
